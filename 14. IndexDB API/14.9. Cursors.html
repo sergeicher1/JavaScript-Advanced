@@ -22,8 +22,13 @@
         const db = event.target.result;
         const transaction = db.transaction(["users3"], "readwrite");
         const userStore = transaction.objectStore("users3");
-      
-      
+        const cursorRequest = userStore.openCursor();
+        cursorRequest.onsuccess = ()=>{
+            const cursor = cursorRequest.result;
+            console.log(cursor);
+        };
+        cursorRequest.onerror = () => console.log(cursorRequest.error);
+        
       
       };
     </script>
