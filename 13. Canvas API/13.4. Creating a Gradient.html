@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      const gradient = context.createLinearGradient(120,100,100,120,100,30);
+      gradient.addColorStop(0, "blue");
+      gradient.addColorStop(1, "yellow");
+      context.fillStyle = gradient;
+      context.fillRect(50, 30, 150, 150);
+      context.strokeRect(50, 30, 150, 150);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      context.beginPath();
+      context.fill();
+      context.fillStyle = "yellow";
+      context.beginPath();
+      context.arc(160, 130, 100, 0, 2 * Math.PI);
+      context.fill();
+
+      context.beginPath();
+      context.moveTo(100, 160);
+      context.quadraticCurveTo(160, 250, 220, 160);
+      context.closePath();
+      context.fillStyle = "red";
+      context.fill();
+      context.lineWidth = 2;
+      context.strokeStyle = "black";
+      context.stroke();
+
+      context.fillStyle = "#FFFFFF";
+      context.fillRect(140, 160, 15, 15);
+      context.fillRect(170, 160, 15, 15);
+
+      context.beginPath();
+      context.arc(130, 90, 20, 0, 2 * Math.PI);
+      context.fillStyle = "#333333";
+      context.fill();
+      context.closePath();
+
+      context.beginPath();
+      context.arc(190, 90, 20, 0, 2 * Math.PI);
+      context.fillStyle = "#333333";
+      context.fill();
+      context.closePath();
+
+      //   context.beginPath();
+      //   context.moveTo(20, 90);
+      //   context.bezierCurveTo(110, 0, 190, 200, 270, 100);
+      //   context.closePath();
+      //   context.stroke();
+      //   context.quadraticCurveTo(130,0,280,90);
+      //   context.beginPath();
+      //   context.moveTo(0, 150);
+      //   context.arcTo(0,0,150,0,140);
+      //   context.closePath();
+      //   context.stroke();
+      //   context.beginPath();
+      //   context.moveTo(20,90);
+      //   context.arc(20,90,50,0, Math.PI / 2, false);
+      //   context.closePath();
+      //   context.stroke();
+      //   context.beginPath();
+      //   context.moveTo(10,20);
+      //   context.lineTo(130,20);
+      //   context.lineTo(130,110);
+      //   context.lineTo(10,110);
+      //   context.closePath();
+      //   context.strokeStyle = "red";
+      //   context.stroke();
+
+      //   context.clip();
+
+      //   context.beginPath();
+      //   context.rect(30,50,180,70);
+      //   context.closePath();
+      //   context.strokeStyle = "green";
+      //   context.stroke();
+      //   context.beginPath();
+      //   context.moveTo(20, 100);
+      //   context.lineTo(140, 10);
+      //   context.lineTo(260, 100);
+      //   context.closePath();
+      //   context.strokeStyl = "#2e86de";
+      //   context.fillStyle = "#4bcffa";
+      //   context.fill();
+      //   context.stroke();
+
+      //   context.beginPath();
+      //   context.rect(30,20,100,90);
+      //   context.closePath();
+      //   context.stroke();
+
+      //   const path1 = new Path2D();
+      //   path1.moveTo(20, 100);
+      //   path1.lineTo(140, 10);
+      //   path1.lineTo(260, 100);
+      //   path1.closePath();
+      //   context.strokeStyle = "blue";
+      //   context.stroke(path1);
+
+      //   const path2 = new Path2D();
+      //   path2.moveTo(20, 110);
+      //   path2.lineTo(140, 200);
+      //   path2.lineTo(260, 110);
+      //   path2.closePath();
+      //   context.strokeStyle = "red";
+      //   context.stroke(path2);
+
+      //   context.beginPath();
+      //   context.moveTo(20,100);
+      //   context.lineTo(140,10);
+      //   context.lineTo(260,100);
+      //   context.closePath();
+      //   context.strokeStyle="blue";
+      //   context.stroke();
+    </script>
+  </body>
+</html>

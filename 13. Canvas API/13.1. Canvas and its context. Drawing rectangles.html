@@ -6,6 +6,19 @@
     <title>zero-to-hero.dev</title>
 </head>
 <body>
-    <script></script>
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <canvas id="canvas2" width="400" height="300"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const context = canvas.getContext("2d");
+        context.fillRect(10,10,100,100);
+        context.clearRect(15,15,20,20);
+        context.clearRect(80,15,20,20);
+        context.clearRect(15,70,90,20);
+
+        const canvas2 = document.getElementById("canvas2");
+        const context2 = canvas.getContext("2d");
+        context2.strokeRect(150,150,100,100);
+    </script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      context.fillStyle = "blue";
+      context.globalAlpha = 0.1;
+      context.fillRect (10,10,100,100);
+      context.strokeStyle = "#ff0000";
+      context.strokeRect(10, 10, 100, 100);
+      context.fillStyle = "#ee5253";
+      context.fillRect(200, 10, 100, 100);
+      context.lineWidth = 10;
+      context.strokeRect(10, 150, 100, 100);
+      context.strokeStyle = "blue";
+      context.setLineDash([2,5,6]);
+      context.strokeRect(200, 150, 100, 100);
+
+      context.strokeStyle = "green";
+      context.lineWidth = 15;
+      context.lineJoin = "miter";
+      context.strokeRect(10, 300, 100, 100);
+      context.lineJoin = "bevel";
+      context.strokeRect(140, 300, 100, 100);
+      context.lineJoin = "round";
+      context.strokeRect(260, 300, 100, 100);
+    </script>
+  </body>
+</html>
