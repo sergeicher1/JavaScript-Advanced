@@ -7,7 +7,22 @@
 </head>
 <body>
     <script>
-        
+        const request = indexedDB.open("test", 5);
+        request.onupgradeneeded = (event)=>{
+            const db= event.target.result;
+            db.createObjectStore("users2", {keyPath: "id", autoIncrement:true});
+        };
+        request.onsuccess = (event)=>{
+            const db = event.target.result;
+            const transaction = db.transaction(["users2"], "readwrite");
+            const userStore = transaction.objectStore("users2");
+            const tom = {name: "Tom", age: 30};
+            const addRequest  = userStore.add(tom);
+            addRequest.onsuccess = (event)=>{
+                console.log("Adding success");
+                console.log("id of the record: ", addRequest.result);
+            };
+        };
     </script>
 </body>
 </html>
