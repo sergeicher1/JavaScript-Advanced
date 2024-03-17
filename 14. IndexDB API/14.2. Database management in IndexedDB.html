@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zero-to-hero.dev</title>
+</head>
+<body>
+    <script>
+        const request = indexedDB.open("test", 2);
+        request.onupgradeneeded = (event)=>{
+            const db = event.target.result;
+            const objectStore = db.createObjectStore("users", {
+                keyPath: "id",
+                autoIncrement: true,
+            });
+            console.log(objectStore);
+            console.log(db.objectStoreNames);
+        }
+        request.onsuccess = (event)=>{
+            const database = event.target.result;
+            console.log(database.name);
+            console.log(database.version);
+            console.log(database.objectStoreNames);
+        };
+    </script>
+</body>
+</html>

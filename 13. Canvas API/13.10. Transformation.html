@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+     context.fillStyle = "blue";
+     context.fillRect(50,50,100,100);
+     context.globalAlpha = 0.5;
+     context.fillStyle = "red";
+     context.translate(50,25);
+     context.rotate(0.52);
+     context.scale(1.5,1.5);
+     context.fillRect(50,50,100,100);
+    context.fillStyle = "green";
+    context.resetTransform();
+    context.fillRect(100, 100, 100,100);
+
+    </script>
+  </body>
+</html>

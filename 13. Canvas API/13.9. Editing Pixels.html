@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      const img = new Image();
+      img.src = "space3.png";
+      img.onload = function () {
+        context.drawImage(img, 0, 0);
+        const imageData = context.getImageData(0, 0, img.width, img.height);
+        let red, green, blue, grey ;
+        for(let i =0; i < imageData.data.length; i += 4){
+            red = imageData.data[i];
+            green = imageData.data[i  + 1];
+            blue = imageData.data[i + 2];
+            grey = red * 0.3 + green * 0.59 + blue * 0.11;
+            imageData.data[i] = grey;
+            imageData.data[i + 1] = grey;
+            imageData.data[i + 2] = grey;
+        }
+        context.putImageData(imageData, img.width + 10, 0);
+        const red = imageData.data[0];
+        const green = imageData.data[1];
+        const blue = imageData.data[2];
+        const alpha = imageData.data[3];
+        console.log(red, green, blue, alpha);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="400"
+      height="800"
+      style="background-color: #eee; border: 1px solid black; margin: 10px"
+    ></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      const w = canvas.width;
+      const h = canvas.height;
+      const mouse = { x: 0, y: 0 };
+      let draw = false;
+      canvas.addEventListener("mousedown", function (e) {
+        mouse.x = e.pageX - this.offsetLeft;
+        mouse.y = e.pageY - this.offsetTop;
+        draw = true;
+        context.beginPath();
+        context.moveTo(mouse.x, mouse.y);
+      });
+      canvas.addEventListener("mousemove", function (e) {
+        if (draw == true) {
+          mouse.x = e.pageX - this.offsetLeft;
+          mouse.y = e.pageY - this.offsetTop;
+          context.lineTo(mouse.x, mouse.y);
+          context.stroke();
+        }
+      });
+      canvas.addEventListener("mouseup", function (e) {
+        mouse.x = e.pageX - this.offsetLeft;
+        mouse.y = e.pageY - this.offsetTop;
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+        context.closePath();
+        draw = false;
+      });
+    </script>
+  </body>
+</html>

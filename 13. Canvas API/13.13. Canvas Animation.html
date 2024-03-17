@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="400"
+      height="800"
+      style="background-color: #eee; border-color: #ccc"
+    ></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      function draw() {
+        context.clearRect(0, 0, 500, 300);
+        const time = new Date();
+        const angle =
+          ((2 * Math.PI) / 6) * time.getSeconds() +
+          ((2 * Math.PI) / 6000) * time.getMilliseconds();
+          context.fillStyle = "red";
+          context.save();
+          context.translate(150,150);
+          context.rotate(angle);
+          context.translate(0,25);
+          context.fillRect(5,5,10,10);
+
+          context.fillStyle = "yellow";
+          context.save();
+          context.translate(150,150);
+          context.rotate(angle);
+          context.translate(0,50);
+          context.fillRect(5,5,10,10);
+
+          context.fillStyle = "green";
+          context.save();
+          context.translate(150,150);
+          context.rotate(angle);
+          context.translate(0,75);
+          context.fillRect(5,5,10,10);
+          window.requestAnimationFrame(draw);
+      }
+      draw();
+
+        let x = 0;
+        let step = 1;
+        function draw() {
+          context.clearRect(0, 0, 400, 250);
+          console.log(x);
+          context.fillStyle = "red";
+          context.fillRect(x, 10, 40, 40);
+          if (x >= 360) step = -1;
+          if (x <= 0) step = 1;
+          x += step;
+          window.requestAnimationFrame(draw);
+        }
+    </script>
+  </body>
+</html>

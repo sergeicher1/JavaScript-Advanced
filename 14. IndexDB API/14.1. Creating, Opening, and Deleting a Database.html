@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <script>
+        const dbDelete = indexedDB.deleteDatabase("test");
+        dbDelete.onerror = (event)=>{
+            console.log("Error deleting");
+        }
+        dbDelete.onsuccess = (event)=>{
+            console.log("Success");
+            console.log(event.result);
+        }
+        const dbFactory = window.indexedDB;
+        console.log(dbFactory);
+        const request = indexedDB.open("test");
+        const promise = indexedDB.databases();
+        promise.then((databases) => console.log(databases));
+        request.onsuccess = (event) => {
+            const database = event.target.result;
+            console.log(database.name);
+
+        }
+        request.onerror = (event) =>{
+            const error = event.target.error;
+            console.log(error.message);
+        }
+        request.onupgradeneeded = (event)=>{
+            console.log(event.oldVersion);
+            console.log(event.newVersion);
+            const database = event.target.result;
+        }
+    </script>
+  </body>
+</html>
