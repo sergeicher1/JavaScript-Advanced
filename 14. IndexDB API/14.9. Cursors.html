@@ -22,9 +22,7 @@
         const db = event.target.result;
         const transaction = db.transaction(["users3"], "readwrite");
         const userStore = transaction.objectStore("users3");
-        const deletRequest = userStore.delete(1);
-        deletRequest.onsuccess=()=> console.log("Success");
-        deletRequest.onerror = () => console.log(deletRequest.error);
+      
       
       
       };
