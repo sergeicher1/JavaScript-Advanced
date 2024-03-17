@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <div id="article">
+      <h1 id="header">Home Page</h1>
+      <p id="text">page text</p>
+      <p>page text</p>
+      <p>page text</p>
+      <p>page text</p>
+    </div>
+    <script>
+        const pageText = document.getElementById("text");
+        console.log(pageText.nodeValue);
+        for(textNode of pageText.childNodes){
+            console.log(textNode.nodeValue);
+        }
+        select elements with id="article"
+      const article = document.getElementById("article");
+      let tempNode = article.lastElementChild;
+      while(tempNode != null){
+        console.log(tempNode);
+        tempNode= tempNode.previousElementSibling;
+      }
+      console.log(article.childElementCount);
+      console.log(article.children.length);
+      console.log("First child: ", article.firstElementChild);
+      console.log("Last child: ", article.lastElementChild);
+      for (node of article.childNodes){
+        let type = "";
+        if (node.nodeType === 1) type = "element";
+        else if(node.nodeType === 2) type = "attribute";
+        else if (node.nodeType === 3) type = "text";
+        console.log(node.nodeName, ":", type);
+      }
+      for (elem of article.children){
+        console.log(elem);
+      }
+      console.log(article.nodeName);
+      console.log(article.nodeType);
+      select all elements with id = "header"
+      const header = document.getElementById("header");
+      get the parent element
+      const headerParent = header?.parentElement;
+      or like this
+      const headerParent = header?.parentNode;
+      console.log(headerParent); // output the parent elemtns to the console 
+    const htmlElem = document.getElementsByTagName("html")[0];
+    const patentElem = htmlElem.parentElement;
+    const parentNode = htmlElem.parentNode;
+    console.log(parentNode);
+    console.log(patentElem);
+    </script>
+  </body>
+</html>

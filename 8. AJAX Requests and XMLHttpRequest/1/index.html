@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><zero-to-hero></zero-to-hero></title>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        const contentDiv = document.getElementById("content");
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () =>{
+            if(xhr.status == 200){
+                contentDiv.innerHTML = xhr.responseXML.body.innerHTML;
+                const html = xhr.responseText;
+                console.log(html);
+            }else{
+                console.log("Server response: ", xhr.statusText);
+            }
+        };
+        xhr.open("GET", "/home.html");
+        xhr.responseType = "document";
+        xhr.setRequestHeader("Accept", "text/html");
+        xhr.send();
+    </script>
+</body>
+</html>

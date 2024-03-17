@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const expire = new Date();
+        expire.setHours(expire.getHours() + 4);
+        document.cookie = "language=JS; expires= "+ expire.toUTCString() + ";";
+        document.cookie = "login=tom20";
+        console.log(document.cookie);
+
+    </script>
+</body>
+</html>

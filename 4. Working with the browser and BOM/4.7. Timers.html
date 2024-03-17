@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #rect{
+            margin: 100px;
+            width: 100px;
+            height: 100px;
+            background: #50c878;
+        }
+    </style>
+</head>
+<body>
+    <div id="rect"></div>
+    <script>
+        const square = document.getElementById("rect");
+        let offset = 0;
+        let step = 1;
+        function moveRect(){
+            if(offset >=600) step = -1;
+            if(offset <= 0) step = 1;
+            offset += step;
+            square.style.marginLeft = offset + "px";
+            window.requestAnimationFrame(moveRect);
+        }
+        window.requestAnimationFrame(moveRect);
+        const timer = document.getElementById("timer");
+        function updateTime(){
+            const now = new Date();
+            timer.textContent = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+        }
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

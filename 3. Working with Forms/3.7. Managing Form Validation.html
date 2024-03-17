@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 150px;
+        }
+        input:invalid{
+            border-color: red;
+        }
+        input:valid{
+            border-color: green;
+        }
+        #usernameErrors{
+            padding: 5px;
+            background-color: #ffcccc;
+            color: #b33939;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="registerForm" name="registerForm">
+        <p>
+            <label for="username">Usernam:</label><br/>
+            <input id="username" name="username" maxlength="20" minlength="3" required/>
+            <div id="usernameErrors"></div>
+        </p>
+        <button type="submit" id="submit" name="submit">Register</button>
+    </form>
+    <script>
+        const  usernameErrors = document.getElementById("usernameErrors");
+        const usernameField = document.registerForm.username;
+        const submit = registerForm.submit;
+        submit.addEventListener("click", validate);
+        function validate(e){
+            if(usernameField.value === "admin"){
+                usernameField.setCustomValidity("Invalid username");
+                
+            }
+            if(!usernameField.validity.valid){
+                usernameErrors.textContent = usernameField.validationMessage;
+                usernameErrors.style.display = "block";
+            }
+            else{
+                usernameErrors.textContent = "";
+                usernameErrors.style.display ="none";
+                e.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>

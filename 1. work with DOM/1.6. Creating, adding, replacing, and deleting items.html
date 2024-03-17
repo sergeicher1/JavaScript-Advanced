@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const header = document.createElement("h1");
+        console.log(header);
+        const headerText = document.createTextNode("Hello HERO!");
+        console.log(headerText);
+        header.appendChild(headerText);
+        console.log(header);
+        document.body.appendChild(header);
+        // create text -> add to created h1 element -> add to body element
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="article">
+      <p>Text 1</p>
+      <p>Text 2</p>
+    </div>
+
+    <script>
+      const article = document.getElementById("article");
+      while (article.firstChild){
+        article.removeChild(article.firstChild);
+      }
+      const last = article.lastElementChild;
+      article.removeChild(last);
+      const old = article.firstElementChild;
+      const newNode = document.createElement("h2");
+      newNode.textContent = "Hello World!";
+      article.replaceChild(newNode, old);
+        const last = article.lastElementChild;
+      const newLast = last.cloneNode(true);
+      newLast.textContent = "Date: ";
+      article.appendChild(newLast);
+
+        const header = document.createElement("h1");
+        header.textContent = "Page Header";
+        const first = document.body.firstElementChild;
+        document.body.insertBefore(header, first);
+    </script>
+  </body>
+</html>

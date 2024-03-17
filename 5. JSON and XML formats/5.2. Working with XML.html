@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const xmlString = `<?xml version="1.0" encoding="UTF-8" ?> 
+    <users>
+        <user name="Tom" age="39">
+            <company>
+                <title>Microsoft</title>
+            </company>
+        </user>
+        <user name="Bob" age="43">
+            <company>
+                <title>Google</title>
+            </company>
+        </user>
+    </users>`;
+    const domParser = new DOMParser();
+    const xmlDOM = domParser.parseFromString(xmlString, "text/xml");
+    const xmlSerializer = new XMLSerializer();
+    const xmlString3 = xmlSerializer.serializeToString(document);
+    console.log(xmlString3);
+    const xmlString2 = xmlSerializer.serializeToString(xmlDOM);
+    console.log(xmlString2);
+    const firstUser = xmlDOM.querySelector("user");
+    console.log(firstUser.getAttribute("name"));
+    console.log(firstUser.getAttribute("age"));
+    console.log(firstUser.querySelector("title").textContent);
+     </script>
+  </body>
+</html>

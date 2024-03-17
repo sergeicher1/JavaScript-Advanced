@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zero-to-hero.dev</title>
+</head>
+<body>
+    <script>
+        const people = ["Tom", "Sam", "Bob"];
+        const andList = new Intl.ListFormat("en-US").format(people);
+        const andList = new Intl.ListFormat("en-US", {
+            style: "long",
+            type: "conjunction",
+        }).format(people);
+        const orLlist = new Intl.ListFormat("en-US", {
+            style:"short",
+            type: "disjunction",
+        }).format(people);
+        console.log(orLlist);
+
+
+    </script>
+</body>
+</html>

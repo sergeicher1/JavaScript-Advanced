@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<users>
+    <user name="Tom" age="39">
+        <contacts>
+            <email>tom@smail.com</email>
+            <phone>+1234567890</phone>
+        </contacts>
+    </user>
+    <user name="Bob" age="43">
+        <contacts>
+            <email>bob@tmail.com</email>
+            <phone>+1334567181</phone>
+        </contacts>
+    </user>
+    <user name="Sam" age="28">
+        <contacts>
+            <email>sam@xmail.com</email>
+            <phone>+1434567782</phone>
+        </contacts>
+    </user>
+</users>

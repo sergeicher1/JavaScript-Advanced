@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="search">
+      <input type="text" name="key" placeholder="Enter text" />
+      <input type="button" value="Print" name="print" />
+      <input type="password" name="password" />
+      <textarea name="message"  cols="30" rows="10"></textarea>
+    </form>
+    <div id="printBlock"></div>
+    <script>
+        const messageBox = document.search.message;
+        function onkeypress(e){
+            const printBlock = document.getElementById("printBlock");
+            const val = String.fromCharCode(e.keyCode);
+            printBlock.textContent += val;
+        }
+        function onkeydown(e){
+            if(e.keyCode === 8){
+                const printBlock = document.getElementById("printBlock");
+                length = printBlock.textContent.length;
+                printBlock.textContent = printBlock.textContent.substring(0, length-1);
+            }
+        }
+        messageBox.addEventListener("keypress", onkeypress);
+        messageBox.addEventListener("keydown", onkeydown);
+
+        const password = document.search.password;
+        function oninput(e){
+            const printBlock = document.getElementById("printBlock");
+            printBlock.textContent=  e.target.value;
+        }
+        password.addEventListener("input", oninput);
+
+      const keyBox = document.search.key;
+      function onchange(e) {
+        const printBlock = document.getElementById("printBlock");
+        const val = e.target.value;
+        printBlock.textContent = val;
+      }
+      function onblur(e) {
+        const text = keyBox.value.trim();
+        if (text === "") keyBox.style.borderColor = "red";
+        else keyBox.style.borderColor = "green";
+      }
+      function onfocus(e) {
+        keyBox.style.borderColor = "blue";
+      }
+      function oninput(e) {
+        const printBlock = document.getElementById("printBlock");
+        const val = e.target.value;
+        printBlock.textContent = val;
+      }
+      keyBox.addEventListener("input", oninput);
+      keyBox.addEventListener("change", onchange);
+      keyBox.addEventListener("blur", onblur);
+      keyBox.addEventListener("focus", onfocus);
+    </script>
+  </body>
+</html>

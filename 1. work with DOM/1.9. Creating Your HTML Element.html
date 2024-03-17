@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <hello-hero hellocolor="#2980b9"></hello-hero>
+    <br />
+    <hello-hero></hello-hero>
+    <script>
+      class HelloHero extends HTMLElement {
+        constructor() {
+          super();
+          let welcome = "Good morning";
+          const hour = new Date().getHours();
+          if (hour > 17) {
+            welcome = "Good evening";
+          } else if (hour > 12) {
+            welcome = "Good noon";
+          }
+          this.style.cursor = "pointer";
+          this.innerText = welcome;
+        }
+        connectedCallback() {
+          this.style.color = "red";
+          if (this.hasAttribute("hellocolor")) {
+            this.style.color = this.getAttribute("hellocolor");
+          }
+        }
+        shotTime() {
+          console.log(new Date().toTimeString());
+        }
+      }
+        const hello = document.getElementById("hello");
+        hello.addEventListener("click", () => hello.shotTime());
+      customElements.define("hello-hero", HelloHero);
+    </script>
+  </body>
+</html>

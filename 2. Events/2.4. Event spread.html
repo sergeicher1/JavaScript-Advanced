@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #blueRect {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+      #redRect {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="blueRect">
+      <div id="redRect"></div>
+    </div>
+
+    <script>
+      const redRect = document.getElementById("redRect");
+      redRect.addEventListener(
+        "click",
+        function () {
+          console.log("Event on redRect");
+        },
+        true
+      );
+      const blueRect = document.getElementById("blueRect");
+      blueRect.addEventListener(
+        "click",
+        function () {
+          console.log("Event on blueRect");
+        },
+        true
+      );
+      document.body.addEventListener(
+        "click",
+        function () {
+          console.log("Body Event");
+        },
+        true
+      );
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #blueRect {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+      #redRect {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="blueRect">
+      <div id="redRect"></div>
+    </div>
+    <script>
+      const redRect = document.getElementById("redRect");
+      redRect.addEventListener("click", () => console.log("Event on redRect"));
+    redRect.addEventListener("click", function (e){
+
+     console.log("Event on redRect");
+        e.stopPropagation();
+    });
+      const blueRect = document.getElementById("blueRect");
+      blueRect.addEventListener("click", () =>
+        console.log("Event on blueRect")
+      );
+      document.body.addEventListener("click", () =>
+        console.log("Event on body")
+      );
+    </script>
+  </body>
+</html>

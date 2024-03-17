@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        localStorage.setItem("email", "tom@gmail.com");
+        const email = localStorage.getItem("email");
+        console.log(email);
+        sessionStorage.setItem("username", "bob");
+        const user = {
+            name: "Tom", 
+            age: 20,
+            status : false,
+        }
+        localStorage.setItem("user", user);
+        localStorage.setItem("user2", JSON.stringify(user));
+    </script>
+</body>
+</html>

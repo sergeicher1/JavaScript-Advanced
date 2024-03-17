@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sum(x, y, func){
+            if(func === undefined){
+                func = function(value){
+                    console.log("result: ", value);
+                }
+            }
+
+            return new Promise(function (resolve){
+                const result = x + y;
+                resolve(result);
+            }).then(func);
+        }
+        sum(3,5);
+        sum(23,5, function(value){
+            console.log("sum:", value);
+        })
+        sum(3,5).then(function (value){
+            console.log("result: ", value);
+        })
+        sum(23,5).then(function (value){
+            console.log("result: ", value);
+        })
+        const x = 4;
+        const y = 8;
+        const myPromise = new Promise (function(){
+            console.log("async operation");
+            const z = x + y;
+            console.log(`Operation result: ${z}`);
+        });
+        myPromise.then();
+        const myProm = new Promise (function(resolve){
+            console.log("async op");
+            resolve("Hello HERO!");
+        });
+        myProm.then(function(value){
+            console.log(`Data received from promise: ${value}`);
+        })
+    </script>
+</body>
+</html>

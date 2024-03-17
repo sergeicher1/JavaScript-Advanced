@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <script>
+        const user = "Bob";
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+          if (xhr.status == 200) {
+            console.log(xhr.responseText);
+          } else {
+            console.log("Server respose: ", xhr.statusText);
+          }
+        };
+        xhr.open("POST", "/user");
+        xhr.send(user);
+      const tom = {
+        name: "Tom",
+        age: 33,
+      };
+      const data = JSON.stringify(tom);
+      const xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        if (xhr.status == 200) {
+          const user = JSON.parse(xhr.responseText);
+          console.log(user.name, "-", user.age);
+        } else {
+          console.log("Server response: ", xhr.statusText);
+        }
+      };
+      xhr.open("POST", "/user");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(data);
+    </script>
+  </body>
+</html>

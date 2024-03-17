@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="url" id="url"/>
+    <button id="btn">Click</button>
+    <script>
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", () =>{
+            const url = document.getElementById("url").value;
+            location.assign(url);
+        });
+        console.log(location.href);
+        console.log(location.pathname);
+        console.log(location.origin);
+        console.log(location.protocol);
+        console.log(location.port);
+        console.log(location.host);
+        console.log(location.hostname);
+        console.log(location.hash);
+        console.log(location.search);
+    </script>
+</body>
+</html>

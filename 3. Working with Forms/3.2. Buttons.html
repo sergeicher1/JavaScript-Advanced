@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="search" >
+        <input type="text" name="key"  placeholder="Enter key"/>
+        <input type="button" name="print" value="Print"/>
+    </form>
+    <div id="printBlock"></div>
+    <script>
+        function printForm(e){
+            const keyBox = document.search.key;
+            const val = keyBox.value;
+            const printBlock = document.getElementById("printBlock");
+            const newParagraph = document.createElement("p");
+            newParagraph.textContent = val;
+            printBlock.appendChild(newParagraph);
+        }
+        const printButton = document.search.print;
+        printButton.addEventListener("click", printForm);
+      function sendForm(e){
+        const keyBox = document.search.key;
+        const val = keyBox.value;
+        if(val.length < 3) {
+            alert("Invalid string length");
+            e.preventDefault();
+
+        }else{
+            alert("Sending allowed");
+        }
+    }
+    const sendButton = document.search.send;
+    sendButton.addEventListener("click", sendForm);
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="../space1.png" alt="pic1"/>
+    <img src="../space2.jpg" alt="pic2"/>
+    <a href="index.html">Article</a>
+    <a href="article2.html">Article2</a>
+    <a href="article3.html">Article3</a>
+    <script>
+        const links = document.links;
+        for (link of links){
+            console.log(`Href: "${link.href}" Text: "${link.innerText}"`);
+        }
+      console.log(document.documentElement);
+    console.log(document.title);
+    console.log(document.lastModified);
+    console.log(document.domain);
+    console.log(document.URL);
+    const images = document.images;
+    images[0].src = "../space3.png";
+    images[1].alt = "New picture";
+    for (img of images){
+        console.log(`Url: "${img.src}" Alt: "${img.alt}"`);
+    }
+    </script>
+  </body>
+</html>

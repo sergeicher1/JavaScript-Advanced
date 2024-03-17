@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="myForm">
+      <select name="languages" multiple>
+        <option value="JS">JavaScript</option>
+        <option value="JAVA">JAVA</option>
+        <option value="C#">C#</option>
+        <option value="Python">Python</option>
+      </select>
+    </form>
+    <div id="selection"></div>
+    <script>
+       const languages = document.myForm.languages;
+       const selection = document.getElementById("selection");
+       function changeOption(){
+        while(selection.firstChild){
+            selection.removeChild(selection.firstChild);
+        }
+        const options = languages.selectedOptions;
+        for(let i = 0; i < options.length; i++){
+            const option = options[i].text;
+            const div = document.createElement("div");
+            const optionText = document.createTextNode(option);
+            div.appendChild(optionText);
+            selection.appendChild(div);
+        }
+       }
+       languages.addEventListener("change", changeOption);
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="myForm">
+      <select name="language" id="" size="5">
+        <option value="JS" selected="selected">JavaScript</option>
+        <option value="JAVA">JAVA</option>
+        <option value="C#">C#</option>
+        <option value="Python">Python</option>
+      </select>
+      <p>
+        <input type="text" name="textInput" id="" placeholder="Enter text" />
+      </p>
+      <p>
+        <input
+          type="text"
+          name="valueInput"
+          id=""
+          placeholder="Enter a value"
+        />
+      </p>
+      <p>
+        <input type="button" value="Add" name="addButton" />
+        <input type="button" value="Remove" name="removeButton" />
+      </p>
+    </form>
+    <script>
+      const myForm = document.myForm;
+      const addButton = myForm.addButton,
+        removeButton = myForm.removeButton,
+        languageSelect = myForm.language;
+        function addOption(){
+            const text = myForm.textInput.value;
+            const value = myForm.valueInput.value;
+            const newOption = new Option(text, value);
+            languageSelect.options[languageSelect.options.length] = newOption;
+        }
+        function removeOption(){
+            const selectedIndex = languageSelect.options.selectedIndex;
+            languageSelect.options[selectedIndex] = null;
+        }
+        addButton.addEventListener("click", addOption);
+        removeButton.addEventListener("click", removeOption);
+        const languagesSelect = document.myForm.language;
+        const selection = document.getElementById("selection");
+        function changeOption(){
+            const selectedOption = languagesSelect.options[languagesSelect.selectedIndex];
+            selection.textContent = "You selected: " + selectedOption.text;
+        }
+        languagesSelect.addEventListener("change", changeOption);
+    </script>
+  </body>
+</html>

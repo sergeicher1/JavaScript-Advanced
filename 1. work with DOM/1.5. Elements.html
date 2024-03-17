@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <h1 id="header">Home page</h1>
+    <script>
+      const header = document.getElementById("header");
+      console.log(Object.getPrototypeOf(header));
+      console.log(header.tagName);
+      console.log(header.textContent);
+      console.log(header.innerText);
+      header.textContent = "Hello zero-to-hero.dev!";
+      console.log(header.textContent);
+      console.log(header.innerText);
+    console.log(header.innerHTML);
+    header.innerHTML = "<span style='color:blue;'>Hello World!</span>";
+    </script>
+  </body>
+</html>

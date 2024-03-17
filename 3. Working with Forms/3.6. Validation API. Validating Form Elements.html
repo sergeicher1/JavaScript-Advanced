@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        width: 150px;
+      }
+      input:invalid {
+        border-color: red;
+      }
+      input:valid {
+        border-color: green;
+      }
+      #emailErrors{
+        padding: 5px;
+        background-color: #ffcccc;
+        color: #b33939;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="registerForm" name="registerForm" method="post" action="register">
+      <p>
+        <label for="username">Username:</label><br />
+        <input
+          id="username"
+          name="username"
+          maxlength="20"
+          minlength="3"
+          required
+        />
+      </p>
+
+      <p>
+        <label for="email">Email:</label><br />
+        <input type="email" name="email" id="email" required />
+        <div id="emailErrors"></div>
+      </p>
+
+      <p>
+        <label for="age">Age:</label><br />
+        <input type="number" name="age" id="age" min="1" max="110" value="18" />
+      </p>
+      <button type="submit" id="submit" name="submit">Register</button>
+    </form>
+    <script>
+        const emailField = document.getElementById("email");
+        const emailErrors = document.getElementById("emailErrors");
+        emailField.addEventListener("change", validateEmail);
+        function validateEmail(){
+            if(!emailField.validity.valid){
+                emailErrors.textContent = emailField.validationMessage;
+                emailErrors.style.display = "block";
+            }else{
+                emailErrors.textContent = "";
+                emailErrors.style.display = "none";
+            }
+        }
+        emailField.addEventListener("change", validateEmail);
+        function validateEmail(){
+            console.log("Can be validated: ",emailField.willValidate);
+            console.log("No value: ",emailField.validity.valueMissing);
+            console.log("Value is valid: ",emailField.validity.valid);
+            console.log("Value matches type: ",emailField.validity.typeMissing);
+            console.log(emailField.validationMessage);
+        }
+    </script>
+  </body>
+</html>

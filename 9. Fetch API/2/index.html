@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zero-to-hero.dev</title>
+
+</head>
+<body>
+    <script>
+        fetch("/hello").then((response)=>{
+            if(response.redirected){
+                console.log("redirected to new page: ", response.url);
+                console.log(response.headers.get("Secret-Code"));
+            }
+            console.log(response.headers.get("Content-Type"));
+            console.log(response.headers.get("Secret-Code"));
+            const headerTitle = "date";
+            if(response.headers.has(headerTitle)){
+                console.log(response.headers.get(headerTitle));
+            }
+            for (header of response.headers){
+                console.log(header[0], ":", header[1]);
+            }
+            console.log(response.status);
+            console.log(response.statusText);
+            console.log(response.url);
+        });
+        similar with async/await
+        getResponse();
+        async function getResponse(){
+            const response = await fetch("/hello");
+            console.log(response.status);
+            console.log(response.statusText);
+            console.log(response.url);
+        }
+    </script>
+</body>
+</html>

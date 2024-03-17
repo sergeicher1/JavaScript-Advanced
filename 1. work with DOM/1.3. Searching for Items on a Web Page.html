@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zero-to-hero.dev</title>
+</head>
+<body>
+    <h1 id="header">Home Page</h1>
+    <p class="text">First paragraph</p>
+    <p class="text">Second paragraph</p>
+    <p class="paragraph">Third paragraph</p>
+    <script>
+        const headerElement = document.getElementById("header");
+        console.log("Text: ", headerElement.innerText);
+        const paragraphs = document.getElementsByTagName("p");
+        for (p of paragraphs){
+            console.log(p.innerText);
+        }
+
+        const paragraphs = document.getElementsByClassName("text");
+        for (p of paragraphs){
+            console.log(p.innerText);
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <p>Language:</p>
+      <input type="radio" name="lang" value="JAVA" />
+      <label>JAVA</label>
+      <br />
+      <input type="radio" name="lang" value="JavaScript" checked />
+      <label>JavaScript</label>
+      <br />
+      <input type="radio" name="lang" value="Python" />
+      <label>Python</label>
+      <br />
+    </form>
+    <script>
+      const languages = document.getElementsByName("lang");
+      for (lang of languages) {
+        console.log(lang.value);
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="article">
+      <p class="text">First paragraph</p>
+      <p class="text">Second paragraph</p>
+    </div>
+    <div id="body">
+      <p class="text">Abstract</p>
+    </div>
+    <script>
+      const article = document.getElementById("article");
+      const articleContent = article.getElementsByClassName("text");
+      for (elem of articleContent) {
+        console.log(elem);
+      }
+        const element = document.querySelector(".annotation p");
+        const elements = document.querySelectorAll(".text p");
+        for(elem of elements){
+      
+        console.log(elem.innerText);
+      }
+    </script>
+  </body>
+</html>

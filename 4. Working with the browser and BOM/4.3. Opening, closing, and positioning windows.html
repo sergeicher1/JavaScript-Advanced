@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="openWindow()">Open</button>
+    <button onclick="closeWindow()">Close</button>
+    <button onclick="moveWindow()">Move</button>
+    <script>
+      let heroWindow = null;
+      function openWindow() {
+        if (!heroWindow || heroWindow.closed) {
+          heroWindow = window.open(
+            "https://zero-to-hero.dev",
+            "_blank",
+            "popup=yes, height=600, width=400, left=1000, top=300"
+          );
+        }
+      }
+      function moveWindow(){
+        heroWindow.moveTo(400, 400);
+      }
+      function closeWindow(){
+        heroWindow?.close();
+        heroWindow = null;
+      }
+      function openWindow(){
+          window.open("https://zero-to-hero.dev","_blank", popup="yes");
+      }
+    </script>
+  </body>
+</html>

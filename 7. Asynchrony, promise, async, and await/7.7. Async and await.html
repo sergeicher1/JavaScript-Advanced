@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function square(str) {
+        return new Promise((resolve, reject) => {
+          const n = parseInt(str);
+          if (isNaN(n)) reject("Not a number");
+          else resolve(n * n);
+        });
+      }
+      async function calculate(str){
+        try{
+            const value = await square(str);
+            console.log("Result : ", value);
+        }catch(error){
+            console.log(error);
+        }
+      }
+      calculate("assddfqwe");
+      calculate("3434");
+      function calculate(str) {
+        square(str)
+          .then((value) => console.log("Result: ", value))
+          .catch((error) => console.log(error));
+      }
+      calculate("ds");
+      calculate("3");
+      function sum(x, y){
+          return new Promise(function(resolve){
+              const result = x + y;
+              resolve(result);
+          });
+      }
+      async function calculate(){
+        const value1 = await sum(5,3);
+        console.log("Result 1: ", value1);
+        const value2 = await sum(6,4);
+        console.log("Result 2: ", value2);
+        const value13 = await sum(7,5);
+        console.log("Result 13: ", value13);
+      }
+      calculate();
+      calculate().then((value)=> console.log("Result: ", value));
+      sum(5,3).then(function(value){
+          console.log("Result: ", value);
+      const value = await sum(5,3);
+      return value;
+      console.log("Result: ", value);
+      });
+    </script>
+  </body>
+</html>

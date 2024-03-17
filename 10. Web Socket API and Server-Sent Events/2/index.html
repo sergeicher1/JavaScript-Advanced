@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <div id="list"></div>
+    <script>
+      const source = new EventSource("/events");
+      const list = document.getElementById("list");
+      source.addEventListener("message", (e) => {
+        const listItem = document.createElement("li");
+        listItem.textContent += e.data;
+        list.appendChild(listItem);
+      });
+    </script>
+  </body>
+</html>

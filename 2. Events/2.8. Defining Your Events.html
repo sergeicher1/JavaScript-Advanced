@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">Pay</button>
+    <script>
+      const button = document.getElementById("btn");
+      document.addEventListener("payment", (e) => {
+        console.log("Success");
+        console.log("Sum:", e.detail.paymentSum);
+        console.log("Balance:", e.detail.balance);
+      });
+      document.addEventListener("fail", (e) => {
+        console.error("Failed");
+        console.error(
+          "current balance: ",
+          e.detail.balance,
+          "Requested sum:",
+          e.detail.paymentSum
+        );
+      });
+      const myAcc = new Account(100);
+
+      button.addEventListener("click", () => myAcc.pay(50));
+      function Account(money) {
+        _money = money;
+        this.pay = function (sum) {
+          const data = {
+            paymentSum: sum,
+            balance: _money,
+          };
+          if (_money >= sum) {
+            _money -= sum;
+            console.log(_money);
+            const event = new CustomEvent("payment", {
+              detail: data,
+            });
+            document.dispatchEvent(event);
+          } else {
+            const event = new CustomEvent("fail", {
+              detail: data,
+            });
+            document.dispatchEvent(event);
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

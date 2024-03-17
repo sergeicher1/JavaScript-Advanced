@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        function handleResult(error, result){
+            if(error){
+                console.log(error);
+            }else{
+                console.log("Result: ", result);
+            }
+        }
+        function asyncFunction(callback){
+            setTimeout(()=>{
+                let result = Math.floor(Math.random() * 100) + 1;
+                if(result < 50){
+                    callback(new Error("Invalid value: ", + result), null);
+                }else{
+                    callback(null, result);
+                }
+            }, 1000);
+        }
+        asyncFunction(handleResult);
+      function asyncFunction() {
+        let result;
+        setTimeout(() => {
+          let result = 22;
+          //   console.log("result:" ,result);
+          if (result < 50) {
+            throw new Error("Invalid value");
+          }
+        }, 1000);
+        return result;
+      }
+      try {
+        const asyncResult = asyncFunction();
+        console.log("result: ", asyncResult);
+      } catch (error) {
+        console.error("Error: ", error);
+      }
+      console.log("End of program");
+    </script>
+  </body>
+</html>

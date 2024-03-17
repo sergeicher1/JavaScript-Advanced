@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="myForm">
+        <input type="checkbox" name="enabled" checked/><span>Enable</span>
+    </form>
+    <form name="myForm">
+        <input type="radio" name="langs" value="JAVA"><span>JAVA</span>
+        <input type="radio" name="langs" value="Python"><span>Python</span>
+        <input type="radio" name="langs" value="C#"><span>C#</span>
+    </form>
+    <div id="printBlock"></div>
+    <script>
+        const printBlock = document.getElementById("printBlock");
+        const myForm = document.myForm;
+        function onclick(e){
+            const lang = e.target.value;
+            printBlock.textContent = `You chose: ${lang}`;
+        }
+        for(let i =0; i < myForm.langs.length; i++){
+            myForm.langs[i].addEventListener("click", onclick);
+        }
+    </script>
+    <script>
+        const enabledBox = document.myForm.enabled;
+        const printBlock = document.getElementById("printBlock");
+        enabledBox.addEventListener("click", (e) => (printBlock.textContent = e.target.checked));
+    </script>
+</body>
+</html>

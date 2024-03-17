@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function generatenumber(str){
+            return new Promise(function(resolve, reject){
+                const parsed= parseInt(str);
+                if(isNaN(parsed))reject("value is not a number");
+                else resolve(parsed);
+            }).then(function(value){
+                console.log("operation result: ", value);
+            },function(error){
+                console.log("error: ", error);
+            });
+        }
+        generatenumber("23");
+        generatenumber("hello");
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function* generate(){
+            yield "Tom";
+            yield "Sam";
+            yield "Bob";
+        }
+        async function printPeople(){
+            const personGenerator = generate();
+            for await ( person of personGenerator){
+                console.log(person);
+            }
+            while(!(person = await personGenerator.next()).done){
+                console.log(person.value);
+            } 
+        }
+        printPeople();
+    </script>
+</body>
+</html>

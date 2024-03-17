@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="console.log('Clicked')">Click me</button>
+    <button onclick="btn_clicks()">Click Me</button>
+    <button id="btn">CLick me</button>
+    <script>
+        let clicks = 0;
+        function btn_clicks(){
+            console.log("Clicked", ++clicks);
+        }
+        document.getElementById("btn").onclick= btn_clicks;
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", btn_clicks);
+        btn.addEventListener("click", function (){
+            console.log("Button is clicked");
+        });
+        btn.addEventListener("click", ()=> console.log("Element clicked"));
+    </script>
+</body>
+</html>

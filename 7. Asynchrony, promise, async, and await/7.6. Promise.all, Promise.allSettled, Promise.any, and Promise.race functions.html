@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const promise1 = new Promise((resolve, reject) => {
+        reject("Error!!!");
+        setTimeout(resolve, 1000, "hello");
+      });
+      const promise2 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1500, "world");
+      });
+
+      Promise.race([promise1, promise2])
+        .then((value) => console.log(value))
+        .catch((error) => console.log(error));
+        Promise.allSettled([promise1, promise2]).then((values) => {
+          const [promise1data, promise2data] = values;
+          console.log(promise1data, promise2data);
+        })
+        Promise.all([promise1, promise2]).then((values) => {
+          const [promise1data, promise2data] = values;
+          console.log(promise1data, promise2data);
+        }).catch((error)=> console.log(error));
+        promise1.then((value) => console.log(value));
+        promise2.then((value) => console.log(value));
+    </script>
+  </body>
+</html>

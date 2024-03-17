@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a id="link" href="https://www.zero-to-hero.dev/">zero-to-hero.dev</a>
+    <script>
+        const link = document.getElementById("link");
+        const event = new MouseEvent("click");
+        link.dispatchEvent(event);
+        link.addEventListener("click", (e) =>{
+            console.log("link has been clicked");
+            e.preventDefault();
+        });
+        const event = new MouseEvent("click", {cancelable:true});
+        link.dispatchEvent(event);
+    </script>
+</body>
+</html>

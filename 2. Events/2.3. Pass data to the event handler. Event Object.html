@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <a id="link" href="https://www.zero-to-hero.dev/">zero-to-hero.dev</a>
+    <script>
+        function linkHandler(e){
+            console.log("Link has been clicked");
+            e.preventDefault();
+        }
+        const link = document.getElementById("link");
+        link.addEventListener("click", linkHandler);
+    </script>
+
+    <button onclick="btn_click(event)">Click Me</button>
+    <script>
+        function btn_click(e){
+            console.log(e);
+        }
+    </script>
+
+
+    <a
+      id="link"
+      href="https://www.zero-to-hero.dev/"
+      onclick="return a_click(this)"
+      >zero-to-hero.dev</a
+    >
+
+    <script>
+      function a_click(anchor) {
+        console.log(anchor.href);
+        return false;
+      }
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" onclick="btn_click('Button Clicked')">Click Me</button>
+    <button id="btn" onclick="btn_click(this)">Click Me</button>
+
+    <script>
+        let clicks =0 ;
+        function btn_click(btn){
+            btn.textContent = `Clicked ${++clicks}`;
+        }
+        function btn_click(text){
+            console.log(text);
+        }
+
+    </script>
+</body>
+</html>

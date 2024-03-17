@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #blueRect {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="blueRect"></div>
+    <script>
+          const blueRectStyle = window.getComputedStyle(blueRect);
+  window.addEventListener("keydown", moveRect);
+  function moveRect(e) {
+    const left = parseInt(blueRectStyle.marginLeft);
+    const top = parseInt(blueRectStyle.marginTop);
+    switch (e.key) {
+      case "ArrowLeft":
+        if (left > 0) blueRect.style.marginLeft = left - 10 + "px";
+        break;
+      case "ArrowUp":
+        if (top > 0) blueRect.style.marginTop = top - 10 + "px";
+        break;
+      case "ArrowRight":
+        if (left < document.documentElement.clientWidth - 100)
+          blueRect.style.marginLeft = left + 10 + "px";
+        break;
+      case "ArrowDown":
+        if (top < document.documentElement.clientHeight - 100)
+          blueRect.style.marginTop = top + 10 + "px";
+        break;
+    }
+  }
+      const blueRect = document.getElementById("blueRect");
+      const position = [20, 20];
+      function setPosition() {
+        blueRect.style.marginLeft = position[0] + "px";
+        blueRect.style.marginTop = position[1] + "px";
+      }
+
+      function init() {
+        const rightLimit = document.documentElement.clientWidth - 100;
+        const bottomLimit = document.documentElement.clientHeight - 100;
+        setPosition();
+        function moveRect(e) {
+          switch (e.key) {
+            case "ArrowLeft":
+              if (position[0] > 0) position[0] = position[0] - 10;
+              break;
+            case "ArrowUp":
+              if (position[1] > 0) position[1] = position[1] - 10;
+              break;
+            case "ArrowRight":
+              if (position[0] < rightLimit) position[0] = position[0] + 10;
+              break;
+            case "ArrowDown":
+              if (position[1] < bottomLimit) position[1] = position[1] + 10;
+              break;
+          }
+          setPosition();
+        }
+        window.addEventListener("keydown", moveRect);
+      }
+      window.addEventListener("load", init);
+    </script>
+  </body>
+</html>

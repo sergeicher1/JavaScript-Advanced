@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zero-to-hero.dev</title>
+</head>
+<body>
+    <script>
+        if(window.Intl && typeof window.Intl === "object"){
+            console.log("supported");
+        }else{
+            console.log("not supported");
+        }
+        const locale = "en-US";
+        const enDateTimeFormat = new Intl.DateTimeFormat(locale);
+        const enNumberFormat = new Intl.NumberFormat(locale);
+        const enCollactor = new Intl.Collator(locale);
+        console.log(enDateTimeFormat, enNumberFormat, enCollactor);
+    </script>
+</body>
+</html>

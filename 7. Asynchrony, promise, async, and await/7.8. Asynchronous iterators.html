@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const generate ={
+            [Symbol.asyncIterator](){
+                return{
+                    index: 0,
+                    people: ["Tom", "Sam", "Bob"],
+                    next(){
+                        if(this.index < this.people.length){
+                            return Promise.resolve({
+                                value: this.people[this.index++],
+                                done:false,
+                            });
+                        }
+                        return Promise.resolve({done: true});
+                    },
+                };
+            },
+        };
+        async function printPeople(){
+            for await(const person of generate){
+                console.log(person);
+            }
+        }
+        printPeople();
+        const data = ["Tom", "Sam", "Bob"];
+        async function readData(){
+            for await (const item of data){
+                console.log(item);
+            }
+        }
+        readData();
+    </script>
+</body>
+</html>

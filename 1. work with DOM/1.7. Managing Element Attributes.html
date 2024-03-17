@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a id="home" class="link" href="index.html" style="color: red;" >Home</a>
+    <script>
+        const element = document.getElementById("home");
+        element.removeAttribute("style");
+        const attribute = document.createAttribute("style");
+        attribute.value = "color: green;";
+        element.setAttributeNode(attribute);
+        element.setAttribute("href", "https://zero-to-hero.dev");
+        element.setAttribute("style", "color: blue");
+        console.log(element.getAttribute("id"));
+        console.log(element.getAttribute("class"));
+        console.log(element.getAttribute("href"));
+        console.log(element.id);
+        console.log(element.className);
+        console.log(element.href);
+        console.log(element.style);
+        console.log(element.getAttribute("style"));
+
+    </script>
+</body>
+</html>

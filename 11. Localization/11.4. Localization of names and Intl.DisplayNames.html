@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zero-to-hero.dev</title>
+</head>
+<body>
+    <script>
+        const us  = new Intl.DisplayNames("en", {type:"region"}).of("US");
+        const ru  = new Intl.DisplayNames("ru", {type:"region"}).of("US");
+        console.log(us);
+        console.log(ru);
+        const ru  = new Intl.DisplayNames("ru", {type:"region"}).of("DE");
+        const en  = new Intl.DisplayNames("en", {type:"region"}).of("DE");
+        const ge  = new Intl.DisplayNames("de", {type:"region"}).of("DE");
+        console.log(ru);
+        console.log(en);
+        const ge  = new Intl.DisplayNames("de", {type:"language"}).of("DE");
+        console.log(ge);
+        const en  = new Intl.DisplayNames("en", {type:"language"}).of("DE");
+        console.log(en);
+        const ru  = new Intl.DisplayNames("ru", {type:"language"}).of("DE");
+        console.log(ru);
+    </script>
+</body>
+</html>

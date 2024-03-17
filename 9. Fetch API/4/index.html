@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <script>
+        fetch("/user", { method: "POST", body: "Tom" })
+          .then((response) => response.text())
+          .then((userName) => console.log(userName));
+      fetch("/user", {
+        method: "POST",
+        header: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "Tom",
+          age: 22,
+        }),
+      })
+        .then((response) => response.json())
+        .then((user) => console.log(user.name, " - ", user.age));
+    </script>
+  </body>
+</html>

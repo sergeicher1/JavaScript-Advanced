@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header-color{
+            color: blue;
+        }
+        .header-font{
+            font-family: Verdana;
+        }
+        .header-size{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="header" class="header-size">Home page</h1>
+    <script>
+        const header = document.getElementById("header");
+        header.classList.remove("header-size");
+        header.classList.add("header-font");
+        header.classList.toggle("header-color");
+        console.log(header.className);
+        header.className =  header.className + "header-color";
+        console.log(header.className);
+        console.log(header.style.color);
+        header.style.color = "navy";
+        console.log(header.style.color);
+        header.style.fontFamily = "Verdana";
+    </script>
+</body>
+</html>

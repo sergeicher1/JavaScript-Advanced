@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <script>
+      const amount = 85;
+      const en2 = new Intl.NumberFormat("en", { style: "unit", unit:"liter", }).format(
+        amount
+      );
+      console.log(en2);
+      const en2 = new Intl.NumberFormat("en", {
+        style: "currency",
+        currency: "USD",
+        currencyDisplay: "name",
+      }).format(amount);
+      console.log(en2);
+        const en2 = new Intl.NumberFormat("en", { style: "currency", currency:"USD", }).format(
+          amount
+        );
+        console.log(en2);
+        const en = new Intl.NumberFormat("en", { style: "percent" }).format(
+          amount
+        );
+        console.log(en);
+        const en2 = new Intl.NumberFormat("en", { style: "percent", minimumFractionDigits:2, }).format(
+          amount
+        );
+        console.log(en2);
+
+        const en = new Intl.NumberFormat("en").format(amount);
+        console.log(en);
+
+        const de = new Intl.NumberFormat("de").format(amount);
+        console.log(de);
+
+        const ru = new Intl.NumberFormat("ru").format(amount);
+        console.log(ru);
+
+        const ru2 = new Intl.NumberFormat("ru", { style: "decimal" }).format(
+          amount
+        );
+        console.log(ru2);
+    </script>
+  </body>
+</html>

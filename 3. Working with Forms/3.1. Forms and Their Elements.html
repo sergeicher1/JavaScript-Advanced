@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="search" name="search" action="https://google.com/search" method="get">
+        <input type="text" id="key" name="q"/>
+        <input type="submit" id="send" name="send"/>
+    </form>
+    <script>
+        const form = document.getElementById("search");
+        const keyField = form.elements["key"];
+        keyField.focus();
+
+        console.log(keyField.type);
+
+        console.log(keyField.value);
+        keyField.value = "Enter text";
+        const keyField = form.elements[0];
+        console.log(keyField);
+        const keyField2 = form.elements["q"];
+        console.log(keyField2);
+        const keyField3 = document.search.q;
+        console.log(keyField3);
+        console.log(form.elements);
+        console.log(form.name);
+        console.log(form.action);
+        console.log(form.method);
+        
+        const keyField = document.getElementById("key");
+
+        console.log(keyField);
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date();
+      const shortTime = new Intl.DateTimeFormat("en", {
+        timeStyle: "short",
+      }).format(now);
+      console.log(shortTime);
+      const mediumTime = new Intl.DateTimeFormat("en", {
+        timeStyle: "medium",
+      }).format(now);
+      console.log(mediumTime);
+      const fullTime = new Intl.DateTimeFormat("en", {
+        timeStyle: "full",
+      }).format(now);
+      console.log(fullTime);
+      const ruDate = new Intl.DateTimeFormat("ru").format(now);
+      console.log(ruDate);
+      const enDate = new Intl.DateTimeFormat("en").format(now);
+      console.log(enDate);
+      const shortDate = new Intl.DateTimeFormat("ru", {
+        dateStyle: "short",
+      }).format(now);
+      console.log(shortDate);
+      const mediumDate = new Intl.DateTimeFormat("ru", {
+        dateStyle: "long",
+      }).format(now);
+      console.log(mediumDate);
+      const longDate = new Intl.DateTimeFormat("ru", {
+        dateStyle: "full",
+      }).format(now);
+      console.log(longDate);
+    </script>
+  </body>
+</html>

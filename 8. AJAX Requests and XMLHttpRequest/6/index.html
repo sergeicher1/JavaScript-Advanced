@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <form action="/user" method="post" id="myForm">
+      <p>
+        <label for="">Username:</label>
+        <br />
+        <input type="text" name="name" />
+      </p>
+      <p>
+        <label for="">User age:</label>
+        <br />
+        <input type="text" name="age" id="" />
+      </p>
+      <input type="submit" value="Send" />
+    </form>
+    <script>
+        const formData = new FormData();
+        formData.append("name", "Tom");
+        formData.append("age", 22);
+      const myForm = document.getElementById("myForm");
+      myForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(myForm);
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+          if (xhr.status == 200) {
+            console.log(xhr.responseText);
+          } else {
+            console.log("Server response: ", xhr.statusText);
+          }
+        };
+        xhr.open("POST", "user", true);
+        xhr.send(formData);
+      });
+    </script>
+  </body>
+</html>

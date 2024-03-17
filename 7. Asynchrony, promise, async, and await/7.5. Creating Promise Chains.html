@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function generate(str) {
+        return new Promise((resolve, reject) => {
+          const parsed = parseInt(str);
+          if (isNaN(parsed)) reject("Not a number");
+          else resolve(parsed);
+        });
+      }
+      function printNumber(str) {
+        generate(str).then((value) => {
+          console.log(value);
+          return "1 then()";
+        }).catch((error)=>{
+            console.log(error);
+            return "1 catch";
+        }).finally(()=>{
+            console.log("finally");
+            return "1 finally";
+        }).then((message) => console.log(message));
+      }
+      printNumber("ssas");
+        function printNumber(str) {
+          generate(str)
+            .then((value) => value * value)
+            .then((value) => console.log("Result: ", value))
+            .catch((error) => console.log(error))
+            .finally(() => console.log("end"))
+            .then(() => console.log("still works"));
+            .catch((error) => {
+              console.log(error);
+              return 0;
+            })
+            .then((value) => console.log("Status code: ", value));
+        }
+          printNumber("qwe");
+        printNumber("2");
+      const first = new Promise(function(resolve){
+          resolve("Hello");
+      });
+      const second = first.then(function(value){
+          return value + " HERO";
+      });
+      const third = second.then(function(value){
+          return value + " !";
+      });
+
+      third.then(function(finalValue){
+          console.log(finalValue);
+      })
+        new Promise((resolve) => resolve("Hello "))
+          .then((value) => value + " HERO ")
+          .then((value) => value + " ! ").then((finalValue) => console.log(finalValue));
+    </script>
+  </body>
+</html>

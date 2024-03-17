@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <img src="/spaceqwe3.png" />
+    <script>
+      const img = document.querySelector("img");
+      fetch("/space3.png")
+        .then((response) => response.blob())
+        .then((data) => (img.src = URL.createObjectURL(data)));
+        fetch("/hello")
+          .then((response) => response.text())
+          .then((responseText) => console.log(responseText));
+        getUser();
+        async function getUser() {
+          const response = await fetch("/user");
+          const user = await response.json();
+          console.log(user.name, "-", user.age);
+        }
+        getUsers();
+        async function getUsers() {
+          const response = await fetch("/users.json");
+          const users = await response.json();
+          users.forEach((user) => console.log(user.name, "-", user.age));
+        }
+    </script>
+  </body>
+</html>

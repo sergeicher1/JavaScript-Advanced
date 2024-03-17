@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const x = 4;
+        const y = 2;
+        const myPromise = new Promise(function(resolve, reject){
+
+            console.log("async operation");
+            if(y === 0){
+                reject("Invalid data");
+            }else{
+                const z = x /y;
+                resolve(z);
+            }
+        })
+        const myPromise = new Promise(function (){
+            console.log("async operation");
+        });
+        const myProm300 = new Promise(function(){
+            console.log("300 async operation");
+            setTimeout(
+                () => console.log("300 complete"),3000
+            );
+        });
+        const myProm100 = new Promise(function(){
+            console.log("100 async operation");
+            setTimeout(
+                () => console.log("100 complete"),1000
+            );
+        });
+        const myProm200 = new Promise(function(){
+            console.log("200 async operation");
+            setTimeout(
+                () => console.log("200 complete"),2000
+            );
+        });
+    </script>
+</body>
+</html>
