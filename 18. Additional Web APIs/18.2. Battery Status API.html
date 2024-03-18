@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zero-to-hero.dev</title>
+</head>
+<body>
+    <script>
+        async function display(){
+            const batManager = await navigator.getBattery();
+            console.log("charging: ", batManager.charging);
+            console.log("chargingTime: ", batManager.chargingTime);
+            console.log("dischargingTome: ", batManager.dischargingTome);
+            console.log("level: ", batManager.level);
+        }
+        display();
+    </script>
+</body>
+</html>
