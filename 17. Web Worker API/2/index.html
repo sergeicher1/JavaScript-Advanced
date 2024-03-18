@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <script>
+      const worker = new Worker("worker.js");
+
+      const message = "Hello web worker";
+      console.log(`[Main thread] Send message: ${message}`);
+      worker.postMessage(message);
+      worker.addEventListener("message", (e) =>
+        console.log(`[Main thread] Response from worker: ${e.data}`)
+      );
+      worker.addEventListener("error", (e) => console.log("Error occurred"));
+    </script>
+  </body>
+</html>
