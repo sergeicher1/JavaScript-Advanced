@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+    <style>
+      div.item {
+        width: 250px;
+        margin: 0 10px;
+      }
+      .image {
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" name="" id="files" accept="image/*" multiple />
+    <div id="filelist"></div>
+    <script>
+      function printFIles(e) {
+        const files = e.target.files;
+        for (file of files) {
+          const reader = new FileReader();
+          reader.onload = (function (fileData) {
+            return function () {
+              const fileItem = document.createElement("div");
+              fileItem.className = "fileItem";
+              const fileHeader = document.createElement("h3");
+              fileItem.appendChild(fileHeader);
+              const img = document.createElement("img");
+              img.src = reader.result;
+              img.className = "image";
+              fileItem.appendChild(img);
+              document.getElementById("filelist").appendChild(fileItem);
+            };
+          })(file);
+          reader.readAsDataURL(file);
+        }
+      }
+      document.getElementById("files").addEventListener("change", printFIles);
+    </script>
+
+    <input type="file" name="" id="files" accept="text/*" multiple />
+    <script>
+      function printFiles(e) {
+        const files = e.target.files;
+        for (file of files) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            console.log(reader.result);
+            console.log("================");
+          };
+          reader.readAsText(file);
+        }
+      }
+      document.getElementById("files").addEventListener("change", printFiles);
+    </script>
+  </body>
+</html>

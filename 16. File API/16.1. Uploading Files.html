@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <div
+      id="target"
+      style="width: 300px; padding: 15px; background-color: rgb(225, 225, 225)"
+    >
+      Drop files here
+    </div>
+    <div id="filelist"></div>
+    <script>
+      function printFiles(e) {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        let output = "";
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          console.log(file);
+          output += "<li><p><strong>" + file.name + "</strong></p>";
+          output += "<p>Type: " + file.type || " n/a</p";
+          output += "<p>Size: " + file.size + " bytes</p>";
+          output +=
+            "<p>Changed on: " +
+            file.lastModifiedDate.toLocaleDateString() +
+            "</p></li>";
+        }
+        document.getElementById("filelist").innerHTML =
+          "<ul>" + output + "</ul";
+      }
+      function handleDragOver(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "copy";
+      }
+      const target = document.getElementById("target");
+      target.addEventListener("dragover", handleDragOver);
+      target.addEventListener("drop", printFiles);
+    </script>
+    <input type="file" name="files[]" id="files" multiple />
+    <div id="list"></div>
+    <script>
+      function printFiles(e) {
+        const files = e.target.files;
+        let output = "";
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          console.log(file);
+          output += "<li><p><strong>" + file.name + "</strong></p>";
+          output += "<p>Type: " + file.type || " n/a</p";
+          output += "<p>Size: " + file.size + " bytes</p>";
+          output +=
+            "<p>Changed on: " +
+            file.lastModifiedDate.toLocaleDateString() +
+            "</p></li>";
+        }
+        document.getElementById("list").innerHTML = "<ul>" + output + "</ul";
+      }
+      document.getElementById("files").addEventListener("change", printFiles);
+    </script>
+  </body>
+</html>

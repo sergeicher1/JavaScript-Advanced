@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+    <style>
+      #progress {
+        width: 0;
+        height: 100%;
+        background-color: #ccc;
+      }
+      #progress-bar {
+        width: 100px;
+        height: 20px;
+        border: 1px solid #888;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" name="" id="files" multiple />
+    <br /><br />
+    <div id="progress-bar">
+      <div id="progress"></div>
+    </div>
+    <script>
+      const progressbar = document.getElementById("progress-bar");
+      const progress = document.getElementById("progress");
+      function updateProgress(e) {
+        if (e.lengthComputable) {
+          const percentLoaded = Math.round((e.loaded / e.total) * 100);
+          if (percentLoaded < 100) {
+            progress.style.width = percentLoaded + "%";
+            progress.textContent = percentLoaded + "%";
+          }
+        }
+      }
+      function handleFileSelected(event) {
+        progress.style.width = "0%";
+        progress.textContent = "0%";
+        const reader = new FileReader();
+        reader.onprogress = updateProgress;
+        reader.onerror = (e) => console.error(e.target.error);
+        reader.onload = () => {
+          progress.style.width = "100%";
+          progress.textContent = "100%";
+        };
+        if (event.target.files.length > 0) {
+          reader.readAsBinaryString(event.target.files[0]);
+        }
+      }
+      document
+        .getElementById("files")
+        .addEventListener("change", handleFileSelected);
+    </script>
+  </body>
+</html>
