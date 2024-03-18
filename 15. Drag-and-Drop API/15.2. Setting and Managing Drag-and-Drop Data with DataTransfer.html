@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+    <style>
+      #target {
+        width: 400px;
+        height: 300px;
+        border: #ccc 1px dashed;
+      }
+      #target.dragover {
+        border-color: #000;
+      }
+      .item {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item" style="background-color: red" draggable="true"></div>
+    <div class="item" style="background-color: blue" draggable="true"></div>
+    <div id="target"></div>
+    <script>
+      const items = document.getElementsByClassName("item");
+      for (item of items) {
+        item.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/html", e.target.outerHTML);
+        });
+      }
+      const target = document.getElementById("target");
+      target.addEventListener("dragover", (e) => e.preventDefault());
+      target.addEventListener("dragenter", (e) =>
+        e.target.classList.add("dragover")
+      );
+      target.addEventListener("dragleave", (e) =>
+        e.target.classList.remove("dragover")
+      );
+      target.addEventListener("drop", (e) => {
+        e.srcElement.innerHTML += e.dataTransfer.getData("text/html");
+        e.target.classList.remove("dragover");
+      });
+    </script>
+  </body>
+</html>

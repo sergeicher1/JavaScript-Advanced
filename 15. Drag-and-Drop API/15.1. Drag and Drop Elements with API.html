@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+    <style>
+      #source {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        display: inline-block;
+      }
+      #target {
+        width: 400px;
+        height: 300px;
+        overflow: hidden;
+        border: #ccc 1px dashed;
+      }
+      div {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="source" draggable="true"></div>
+    <div id="target"></div>
+    <script>
+      let dragged = null;
+      const source = document.getElementById("source");
+      source.addEventListener("dragstart", (e) => {
+        dragged = e.target;
+        console.log("Drag started");
+      });
+      const target = document.getElementById("target");
+      target.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        console.log("Dragover operation");
+      });
+      target.addEventListener("drop", (e) => {
+        target.parentNode.removeChild(dragged);
+        e.target.appendChild(dragged.cloneNode());
+        console.log("Drag and drop finished");
+      });
+    </script>
+  </body>
+</html>
