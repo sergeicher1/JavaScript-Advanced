@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <div>Hello World!</div>
+    <input id="text" value="Hello HERO!" />
+    <button id="btn">Speak</button>
+    <script>
+      document.getElementById("btn").addEventListener("click", speak);
+      function speak() {
+        if (window.speechSynthesis) {
+          const utterance = new SpeechSynthesisUtterance();
+          utterance.text = document.getElementById("text").value;
+          utterance.lang = "en";
+          utterance.volume = 0.5;
+          utterance.rate = 0.5;
+          utterance.pitch = 0.5;
+          window.speechSynthesis.speak(utterance);
+        } else {
+          console.log("Feature is NOT supported");
+        }
+      }
+      if(window.speechSynthesis){
+          console.log("Speech sythesis is supported")
+      }else{
+          console.log("Speech synthesis is NOT supported");
+      }
+    </script>
+  </body>
+</html>
