@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <div>Hello HERO!</div>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <script>
+      const recognition = new webkitSpeechRecognition();
+      let index = 0;
+      recognition.onresult = function (event) {
+        const results = event.results;
+        const firstResult = results[index++];
+        const firstAlternative = firstResult[0];
+        const transcript = firstAlternative.transcript;
+        const confidence = firstAlternative.confidence;
+        console.log(transcript);
+        console.log(confidence);
+      };
+      document.getElementById("startBtn").addEventListener("click", () => {
+        if (window.webkitSpeechRecognition) {
+          recognition.continious = true;
+          recognition.lang = "en";
+          recognition.start();
+          console.log("Supported");
+        } else {
+          console.log("Not supported");
+        }
+      });
+      document.getElementById("stopBtn").addEventListener("click", () => {
+        recognition.stop();
+        index = 0;
+      });
+    </script>
+  </body>
+</html>

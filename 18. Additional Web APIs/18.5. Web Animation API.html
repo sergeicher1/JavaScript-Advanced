@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+    <style>
+      @keyframes frames {
+        0% {
+          transform: scale(2);
+          opacity: 0.2;
+        }
+        30% {
+          transform: scale(3);
+          opacity: 0.4;
+        }
+        60% {
+          transform: scale(4);
+          opacity: 0.6;
+        }
+        100% {
+          transform: scale(5);
+          opacity: 0.8;
+        }
+      }
+      #circle {
+        width: 50px;
+        height: 50px;
+        opacity: 0.2;
+        background-color: red;
+        margin: 100px;
+        border-radius: 50px;
+        animation: frames 500ms ease-in-out 10ms infinite alternate both;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Hello World!</div>
+    <div id="circle"></div>
+    <script>
+      const circle = document.getElementById("circle");
+      const frames = [
+        {
+          transform: "scale(2)",
+          opacity: 0.2,
+          offset: 0,
+        },
+        {
+          transform: "scale(3)",
+          opacity: 0.4,
+          offset: 0.3,
+        },
+        {
+          transform: "scale(4)",
+          opacity: 0.6,
+          offset: 0.6,
+        },
+        {
+          transform: "scale(5)",
+          opacity: 1.0,
+          offset: 1,
+        },
+      ];
+      const config = {
+        duration: 500,
+        easing: "ease-in-out",
+        delay: 10,
+        iterations: Infinity,
+        direction: "alternate",
+        fill: "both",
+      };
+      circle.animate(frames, config);
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+    <style>
+      #rect {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="pause">pause</button>
+    <button id="play">play</button>
+    <button id="cancel">cancel</button>
+    <button id="fast">fast</button>
+    <button id="slow">slow</button>
+    <div id="rect"></div>
+    <script>
+      const rect = document.getElementById("rect");
+      const frames = [
+        {
+          marginLeft: "50px",
+          offset: 0,
+        },
+        {
+          marginLeft: "100px",
+          offset: 0.3,
+        },
+        {
+          marginLeft: "150px",
+          offset: 0.6,
+        },
+        {
+          marginLeft: "200px",
+          offset: 1,
+        },
+      ];
+      const config = {
+        duration: 600,
+        easing: "ease-in-out",
+        iterations: Infinity,
+        direction: "alternate",
+      };
+      const animation = rect.animate(frames, config);
+      document
+        .getElementById("pause")
+        .addEventListener("click", () => animation.pause());
+      document
+        .getElementById("play")
+        .addEventListener("click", () => animation.play());
+      document
+        .getElementById("cancel")
+        .addEventListener("click", () => animation.cancel());
+      document
+        .getElementById("fast")
+        .addEventListener("click", () => (animation.playbackRate *= 2));
+      document
+        .getElementById("slow")
+        .addEventListener("click", () => (animation.playbackRate /= 2));
+    </script>
+  </body>
+</html>
