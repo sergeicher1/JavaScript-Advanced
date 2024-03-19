@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+    <style>
+      :root {
+        --script: console.log("Hello from CSS");
+        --script: if(x > 5) document.body.style.background = "blue";
+        --log: localStorage[ "minwidth"] = 0;
+      }
+      @media (min-width: 500px) {
+        :root {
+          --log: localStorage[ "minwidth"] =500;
+        }
+      }
+      @media (min-width: 800px) {
+        :root {
+          --log: localStorage[ "minwidth"] =800;
+        }
+      }
+      @media (min-width: 1200px) {
+        :root {
+          --log: localStorage[ "minwidth"] =1200;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>Hello HERO!</div>
+    <script>
+      window.onload = window.onresize = () => {
+        const log = getComputedStyle(document.documentElement).getPropertyValue(
+          "--log"
+        );
+        eval(log);
+      };
+        let x = 10;
+        const style = getComputedStyle(document.documentElement);
+        const script = style.getPropertyValue("--script");
+        new Function(script)();
+        eval(script);
+    </script>
+  </body>
+</html>
