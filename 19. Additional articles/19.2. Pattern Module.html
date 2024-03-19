@@ -8,7 +8,59 @@
   <body>
     <div>Hello HERO!</div>
     <script>
-    
+      var moduleA =
+        moduleA ||
+        (function () {
+          const message = "Hello HERO!";
+          return {
+            printMessage: function () {
+              console.log(message);
+            },
+          };
+        })();
+      var moduleB =
+        moduleB ||
+        (function (moduleA) {
+          return {
+            print: function () {
+              moduleA.printMessage();
+            },
+          };
+        })(moduleA);
+        moduleB.print();
+        const calculator = (function () {
+          const data = {
+            number: 0,
+          };
+          return {
+            sum: function (n) {
+              data.number += n;
+            },
+            substract: function (n) {
+              data.number -= n;
+            },
+            print: function () {
+              console.log("result: ", data.number);
+            },
+          };
+        })();
+        calculator.sum(10);
+        calculator.sum(3);
+        calculator.print();
+        calculator.substract(4);
+        calculator.print();
+
+      const printer = (function (){
+          const message = {
+              greeting:"hello"
+          };
+          return {
+              print: function(){
+                  console.log(message.greeting);
+              },
+          };
+      })();
+      printer.print();
     </script>
   </body>
 </html>
