@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zero-to-hero.dev</title>
+  </head>
+  <body>
+    <div>Hello HERO!</div>
+    <script>
+      var MathLib = MathLib || {};
+      MathLib.MAX = 1234;
+      MathLib.sum = function (a, b) {
+        return a + b;
+      };
+      var OtherMathLib = OtherMathLib || {
+        sum: function (nums) {
+          let result = 0;
+          for (n of nums) result += n;
+          return result;
+        },
+      };
+      console.log(OtherMathLib.sum([4, 5, 6]));
+      console.log(MathLib.sum(4, 5));
+      console.log(MathLib.MAX);
+      MathLib.MAX = 5678;
+      console.log(MathLib.MAX);
+    </script>
+  </body>
+</html>
